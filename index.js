@@ -1,9 +1,10 @@
-var numRows = 55
-var numColumns = 200
+var numRows = 100
+var numColumns = 260
 var rows = []
 var iterations = 1
-var coverage = .28
-var interval = 40
+var coverage = .22
+var interval = 10
+var lifeChar = '\u24FF'
 
 // setup random start values
 for(var i=0; i<=numRows; i++){
@@ -19,6 +20,32 @@ for(var i=0; i<=numRows; i++){
   }
   rows.push(row)
 }
+
+// setup glider
+/*for(var i=0; i<=numRows; i++){
+  for(var k=0; k<=numColumns; k++){
+    rows[i][k] = 0
+  }
+}
+rows[5][5]=1
+rows[6][6]=1
+rows[7][6]=1
+rows[7][5]=1
+rows[7][4]=1*/
+
+/*
+// setup acorn
+for(var i=0; i<=numRows; i++){
+  for(var k=0; k<=numColumns; k++){
+    rows[i][k] = 0
+  }
+}
+rows[10][10]=1
+rows[11][9]=1
+rows[11][10]=1
+rows[11][11]=1
+rows[12][11]=1
+*/
 
 setInterval(function(){
   var newRows = []
@@ -74,7 +101,7 @@ setInterval(function(){
     rowString = ''
     row.forEach(function(column){
       if(column){
-        rowString += '0'
+        rowString += lifeChar
       }
       else{
         rowString += '\u0020'
